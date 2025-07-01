@@ -14,8 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Common.AITools.Tvbboy">
-      <HintPath>bin\Debug\net7.0-windows7.0\Common.AITools.Tvbboy.dll</HintPath>
+    <Reference Include="Common.Framework.Tvbboy">
+      <HintPath>dll\Common.Framework.Tvbboy.dll</HintPath>
     </Reference>
   </ItemGroup>
 
