@@ -76,8 +76,8 @@ namespace myproject
             imgList.ImageSize = new Size(32, 32); // 图片大小
 
             // 加载图片到 ImageList
-            imgList.Images.Add(Image.FromFile(@"faces\boy.jpg"));
-            imgList.Images.Add(Image.FromFile(@"faces\girl.jpg"));
+            imgList.Images.Add(Image.FromFile(@"..\..\..\faces\boy.jpg"));
+            imgList.Images.Add(Image.FromFile(@"..\..\..\faces\girl.jpg"));
 
             // 关联 ImageList 到 ListView
             listView2.SmallImageList = imgList;
