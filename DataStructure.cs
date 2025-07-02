@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace myproject
+{
+    internal class DataStructure
+    {
+    }
+    public class Province
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public List<City> Cities { get; set; } = new List<City>();
+    }
+
+    public class City
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public List<District> Districts { get; set; } = new List<District>();
+    }
+
+    public class District
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
+}
