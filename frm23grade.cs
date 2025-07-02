@@ -3,13 +3,13 @@ using System.Diagnostics.Eventing.Reader;
 
 namespace myproject
 {
-    public partial class Form1 : Form
+    public partial class frm23grade : Form
     {
         int count = 10; //该变量的作用域是所有的类内部，包括类内的各个函数（方法）
         /// <summary>
         /// 窗体初始化要做的事情
         /// </summary>
-        public Form1()
+        public frm23grade()
         {
             InitializeComponent();
         }

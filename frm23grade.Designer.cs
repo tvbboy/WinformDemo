@@ -1,6 +1,6 @@
 ﻿namespace myproject
 {
-    partial class Form1
+    partial class frm23grade
     {
         /// <summary>
         ///  Required designer variable.
