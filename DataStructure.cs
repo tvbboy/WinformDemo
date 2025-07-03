@@ -28,4 +28,11 @@ namespace myproject
         public int Id { get; set; }
         public string Name { get; set; }
     }
+    public class PostInfo
+    {
+        public string Title { get; set; }
+        public string Author { get; set; }
+        public string ReplyCount { get; set; }
+        public string Url { get; set; }
+    }
 }

@@ -65,8 +65,20 @@
             btnShowImage = new Button();
             cboImageStyle = new ComboBox();
             label9 = new Label();
+            numericUpDown1 = new NumericUpDown();
+            listBox1 = new ListBox();
+            listView1 = new ListView();
+            tabControl1 = new TabControl();
+            tabPage1 = new TabPage();
+            tabPage2 = new TabPage();
+            colorDialog1 = new ColorDialog();
+            btnChangeColor = new Button();
+            button1 = new Button();
+            folderBrowserDialog1 = new FolderBrowserDialog();
             grpBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbx).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            tabControl1.SuspendLayout();
             SuspendLayout();
             // 
             // lblInfo
@@ -163,7 +175,7 @@
             grpBox.Controls.Add(radC);
             grpBox.Controls.Add(radB);
             grpBox.Controls.Add(radA);
-            grpBox.Location = new Point(62, 194);
+            grpBox.Location = new Point(19, 183);
             grpBox.Name = "grpBox";
             grpBox.Size = new Size(304, 205);
             grpBox.TabIndex = 8;
@@ -420,11 +432,90 @@
             label9.TabIndex = 31;
             label9.Text = "显示方式";
             // 
+            // numericUpDown1
+            // 
+            numericUpDown1.Location = new Point(772, 133);
+            numericUpDown1.Name = "numericUpDown1";
+            numericUpDown1.Size = new Size(120, 23);
+            numericUpDown1.TabIndex = 32;
+            // 
+            // listBox1
+            // 
+            listBox1.FormattingEnabled = true;
+            listBox1.Location = new Point(911, 12);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(120, 89);
+            listBox1.TabIndex = 33;
+            // 
+            // listView1
+            // 
+            listView1.Location = new Point(910, 107);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(121, 97);
+            listView1.TabIndex = 34;
+            listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // tabControl1
+            // 
+            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Location = new Point(65, 420);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(200, 100);
+            tabControl1.TabIndex = 35;
+            // 
+            // tabPage1
+            // 
+            tabPage1.Location = new Point(4, 26);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(192, 70);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "tabPage1";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            tabPage2.Location = new Point(4, 26);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(192, 70);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "tabPage2";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnChangeColor
+            // 
+            btnChangeColor.Location = new Point(290, 482);
+            btnChangeColor.Name = "btnChangeColor";
+            btnChangeColor.Size = new Size(75, 23);
+            btnChangeColor.TabIndex = 36;
+            btnChangeColor.Text = "调背景色";
+            btnChangeColor.UseVisualStyleBackColor = true;
+            btnChangeColor.Click += btnChangeColor_Click;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(291, 446);
+            button1.Name = "button1";
+            button1.Size = new Size(101, 30);
+            button1.TabIndex = 37;
+            button1.Text = "打开计算器";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // frm24grade
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1190, 573);
+            Controls.Add(button1);
+            Controls.Add(btnChangeColor);
+            Controls.Add(tabControl1);
+            Controls.Add(listView1);
+            Controls.Add(listBox1);
+            Controls.Add(numericUpDown1);
             Controls.Add(label9);
             Controls.Add(cboImageStyle);
             Controls.Add(btnShowImage);
@@ -461,6 +552,8 @@
             grpBox.ResumeLayout(false);
             grpBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pbx).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            tabControl1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -503,5 +596,15 @@
         private Button btnShowImage;
         private ComboBox cboImageStyle;
         private Label label9;
+        private NumericUpDown numericUpDown1;
+        private ListBox listBox1;
+        private ListView listView1;
+        private TabControl tabControl1;
+        private TabPage tabPage1;
+        private TabPage tabPage2;
+        private ColorDialog colorDialog1;
+        private Button btnChangeColor;
+        private Button button1;
+        private FolderBrowserDialog folderBrowserDialog1;
     }
 }

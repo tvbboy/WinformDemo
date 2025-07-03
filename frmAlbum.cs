@@ -1,11 +1,11 @@
 ﻿namespace myproject
 {
-    public partial class form2 : Form
+    public partial class frmAlbum : Form
     {
         int currImg = 0;
         string[] picPath = { "pics/pic1.jpg", "pics/pic2.jpg", "pics/pic3.jpg", "pics/pic4.jpg", "pics/pic5.jpg", "pics/pic6.jpg", "pics/pic7.jpg" };
         Image[] imgs = new Image[7];
-        public form2()
+        public frmAlbum()
         {
             InitializeComponent();
         }

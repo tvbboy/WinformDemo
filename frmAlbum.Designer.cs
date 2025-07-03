@@ -1,6 +1,6 @@
 ﻿namespace myproject
 {
-    partial class form2
+    partial class frmAlbum
     {
         /// <summary>
         /// Required designer variable.

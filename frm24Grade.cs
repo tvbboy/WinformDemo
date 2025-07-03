@@ -120,7 +120,7 @@ namespace myproject
                 MessageBox.Show($"The maximum value is: {CommFunction.getMax(num1, num2, num3)}", "Maximum Value", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
-      
+
 
         private void radioButton_CheckedChanged(object sender, EventArgs e)
         {
@@ -241,7 +241,7 @@ namespace myproject
             // 方法1：使用Image.FromFile直接加载图片文件
             // pbx.Image = Image.FromFile(@"C:\24application\WinformDemo\images\pic1.jpg");
             //补充下绝对路径和相对路径的概念
-            if(cboImageStyle.Text== "Stretch")
+            if (cboImageStyle.Text == "Stretch")
                 pbx.SizeMode = PictureBoxSizeMode.StretchImage; // 设置图片显示模式
             else
                 pbx.SizeMode = PictureBoxSizeMode.AutoSize; // 设置图片显示模式
@@ -250,7 +250,20 @@ namespace myproject
             // 方法2：使用Bitmap类加载图片
             // pbx.Image = new Bitmap(@"C:\path\to\your\image.png");
         }
+
+        private void btnChangeColor_Click(object sender, EventArgs e)
+        {
+            // colorDialog1.Color = Color.Red; // 设置默认颜色为红色
+            colorDialog1.ShowDialog();
+            this.BackColor = colorDialog1.Color;
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("calc.exe");
+        }
     }
 
-   
+
 }

@@ -12,8 +12,11 @@ namespace myproject
             // see https://aka.ms/applicationconfiguration.  
             ApplicationConfiguration.Initialize();
             // Application.Run(new frm23grade());
-            Application.Run(new frm24grade());
-           // Application.Run(new Form1());
+            //Application.Run(new frm24grade());
+            // Application.Run(new frmCrawer());
+            // Application.Run(new Form1());
+            Application.Run(new frmMain());
+
         }
     }
 }

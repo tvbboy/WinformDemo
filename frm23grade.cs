@@ -28,7 +28,7 @@ namespace myproject
             txtNum2.Text = "26";
             txtNum3.Text = "44";
             int num1 = 35, num2 = 26, num3 = 44;
-            lblResult.Text = getMax(num1, num2, num3).ToString();
+            lblResult.Text =CommFunction.getMax(num1, num2, num3).ToString();
             string[] provinces = { "山东省", "广东省", "上海市" };
             foreach (string province in provinces)
                 cboProvince.Items.Add(province); //动态创建combobox的items
@@ -41,31 +41,9 @@ namespace myproject
             int num1 = int.Parse(txtNum1.Text);
             int num2 = int.Parse(txtNum2.Text);
             int num3 = int.Parse(txtNum3.Text);
-            lblResult.Text = getMax(num1, num2, num3).ToString();
+            lblResult.Text = CommFunction.getMax(num1, num2, num3).ToString();
         }
-        /// <summary>
-        //2024-7-1 求最大值
-        /// </summary>
-        /// <param name="par1">参数1</param>
-        /// <param name="par2">参数2</param>
-        /// <param name="par3">参数3</param>
-        /// <returns>三个数最大值</returns>
-        private int getMax(int par1, int par2, int par3)
-        {
-            int max = par1;//赋值给MAX
-            if (par1 >= par2 && par1 >= par3)
-            {
-                max = par1;
-            }
-            else if (par2 >= par3)
-            {
-                max = par2;
-            }
-            else
-                max = par3;
-            return max; ;
-
-        }
+      
 
         private void btnGetday_Click(object sender, EventArgs e)
         {
@@ -79,27 +57,11 @@ namespace myproject
             {
                 day += days[i];
             }
-            if (isLeap(year) && month > 2)
+            if (CommFunction.isLeap(year) && month > 2)
                 day += 1;
             MessageBox.Show(string.Format("是该年的第{0}天,来自控件的答案{1}", day, dt.DayOfYear));
         }
-        /// <summary>
-        /// 2024-7-2用来判断闰年
-        /// </summary>
-        /// <param name="year">要判断的年份</param>
-        /// <returns>是/否</returns>
-        private bool isLeap(int year)
-        {
-            // 判断是否为闰年
-            if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+     
 
         private void btnGetDays_Click(object sender, EventArgs e)
         {
