@@ -53,5 +53,11 @@ namespace myproject
             FrmOcr frmOcr = new FrmOcr();
             frmOcr.ShowDialog();
         }
+
+        private void btnSegment_Click(object sender, EventArgs e)
+        {
+            frmSegment frmSegment = new frmSegment();
+            frmSegment.ShowDialog();
+        }
     }
 }

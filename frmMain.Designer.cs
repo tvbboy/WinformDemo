@@ -33,6 +33,7 @@
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             tabPage2 = new TabPage();
+            btnSegment = new Button();
             button1 = new Button();
             btnControls = new Button();
             btnCrawer = new Button();
@@ -76,31 +77,42 @@
             // 
             tabPage1.Controls.Add(btnHomework2);
             tabPage1.Controls.Add(btnHomework1);
-            tabPage1.Location = new Point(4, 48);
+            tabPage1.Location = new Point(4, 35);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(863, 382);
+            tabPage1.Size = new Size(863, 395);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "作业区";
             tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(btnSegment);
             tabPage2.Controls.Add(button1);
             tabPage2.Controls.Add(btnControls);
             tabPage2.Controls.Add(btnCrawer);
             tabPage2.Controls.Add(btnSearchFile);
-            tabPage2.Location = new Point(4, 48);
+            tabPage2.Location = new Point(4, 35);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(863, 382);
+            tabPage2.Size = new Size(863, 395);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "示例区";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // btnSegment
+            // 
+            btnSegment.Location = new Point(112, 223);
+            btnSegment.Name = "btnSegment";
+            btnSegment.Size = new Size(152, 47);
+            btnSegment.TabIndex = 8;
+            btnSegment.Text = "示例人名识别";
+            btnSegment.UseVisualStyleBackColor = true;
+            btnSegment.Click += btnSegment_Click;
+            // 
             // button1
             // 
-            button1.Location = new Point(112, 239);
+            button1.Location = new Point(112, 291);
             button1.Name = "button1";
             button1.Size = new Size(152, 47);
             button1.TabIndex = 7;
@@ -139,7 +151,7 @@
             // 
             // frmMain
             // 
-            AutoScaleDimensions = new SizeF(19F, 39F);
+            AutoScaleDimensions = new SizeF(12F, 26F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(994, 513);
             Controls.Add(tabControl1);
@@ -164,5 +176,6 @@
         private Button btnSearchFile;
         private Button btnControls;
         private Button button1;
+        private Button btnSegment;
     }
 }
