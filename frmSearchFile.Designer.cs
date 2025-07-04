@@ -65,9 +65,9 @@
             // 
             // btnSearch
             // 
-            btnSearch.Location = new Point(146, 62);
+            btnSearch.Location = new Point(12, 62);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(95, 33);
+            btnSearch.Size = new Size(346, 33);
             btnSearch.TabIndex = 3;
             btnSearch.Text = "搜索";
             btnSearch.UseVisualStyleBackColor = true;

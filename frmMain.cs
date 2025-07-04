@@ -17,7 +17,7 @@ namespace myproject
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnHomework2_Click(object sender, EventArgs e)
         {
             frmAlbum fm2 = new frmAlbum();
             fm2.ShowDialog(); //显示模态窗体
@@ -38,8 +38,20 @@ namespace myproject
 
         private void btnCrawer_Click(object sender, EventArgs e)
         {
-            frmSpider frmSpider = new frmSpider();
+            frmTiebaSpider frmSpider = new frmTiebaSpider();
             frmSpider.ShowDialog();
+        }
+
+        private void btnControls_Click(object sender, EventArgs e)
+        {
+            frm24grade fm24 = new frm24grade();
+            fm24.ShowDialog();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            FrmOcr frmOcr = new FrmOcr();
+            frmOcr.ShowDialog();
         }
     }
 }

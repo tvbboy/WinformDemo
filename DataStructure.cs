@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Emgu.CV;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,5 +35,10 @@ namespace myproject
         public string Author { get; set; }
         public string ReplyCount { get; set; }
         public string Url { get; set; }
+    }
+    public class LicensePlateResult
+    {
+        public string PlateNumber { get; set; }
+        public Mat ProcessedImage { get; set; }
     }
 }
