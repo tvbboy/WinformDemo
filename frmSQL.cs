@@ -1,15 +1,20 @@
 ﻿using Microsoft.VisualBasic;
 using SQL;
 using System.Data;
+using System.Formats.Asn1;
 using System.Text;
-
+using System.Xml.Linq;
+using SecurityUtils;
 namespace myproject
 {
     public partial class frmSQL : Form
     {
         string msg = string.Empty;
         SQLHelper sh;
-        string base_sql = "select studentname as 学生姓名,major as 专业 from tblTopStudents where 1=1";
+        string base_sql = @"select studentNo as 学号, studentname as 姓名,CASE gender WHEN 1 THEN '男' 
+                      WHEN 0 THEN '女' 
+                      ELSE '其他' 
+         END as 性别,Major as 专业 from tblTopStudents where 1=1";
         /// <summary>
         /// 构造函数往往放置一些初始化的工作
         /// </summary>
@@ -22,7 +27,7 @@ namespace myproject
         private void btnLink_Click(object sender, EventArgs e)
         {
 
-            string sql = "select count(*) from tblstudents"; //该SQL意思是，获取tblstudents的行数
+            string sql = "select count(*) from tblTopStudents"; //该SQL意思是，获取tblstudents的行数
             try
             {
                 string? num = sh.RunSelectSQLToScalar(sql);  //一般运行查询语句
@@ -39,7 +44,7 @@ namespace myproject
             MessageBox.Show(msg);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnInsert_Click(object sender, EventArgs e)
         {
             string studentnumber = Interaction.InputBox("打卡", "请输入打卡的学号，默认是自己", "10130212110");
             try
@@ -89,18 +94,14 @@ namespace myproject
             string sql = base_sql;
             string major = cboMajor.Text;
             string name = txtStuName.Text;
+            if (name.Length > 0)
+            {
+                sql += string.Format(" and studentname like '%{0}%'", name);
+            }
             if (cboMajor.Text != "全部显示")
             {
-                if (major.Length > 0)
-                {
-                    sql += string.Format(" and major='{0}'", major);
-                }
-                if (name.Length > 0)
-                {
-                    sql += string.Format(" and studentname like '%{0}%'", name);
-                }
+                sql += string.Format(" and major='{0}'", major);
             }
-
             bindData(sql);
         }
         /// <summary>
@@ -185,11 +186,11 @@ namespace myproject
         {
             SearchStu();
         }
-        private void  SearchStu()
+        private void SearchStu()
         {
             listView1.Items.Clear();
             listView2.Items.Clear();
-            string sql = "SELECT studentno,STUDENTNAME,gender FROM tblTopStudents\r\nWHERE studentNo NOT IN\r\n(\r\nselect STUDENTNUMBER from tblStudentAbsent where DATEDIFF(DAY,dtedate,GETDATE())=0\r\n)\r\n";           
+            string sql = "SELECT studentno,STUDENTNAME,gender FROM tblTopStudents\r\nWHERE studentNo NOT IN\r\n(\r\nselect STUDENTNUMBER from tblStudentAbsent where DATEDIFF(DAY,dtedate,GETDATE())=0\r\n)\r\n";
             DataSet ds = new DataSet();
             try
             {
@@ -197,13 +198,6 @@ namespace myproject
                 sh.RunSQL(sql, ref ds);
                 DataTable dt = ds.Tables[0];
                 bindImgTolist(dt);
-                StringBuilder tmp = new StringBuilder();
-                foreach (DataRow stu in dt.Rows)
-                {
-                    tmp.Append(string.Format("学号:{0},姓名:{1}",stu[0], stu[1]));
-                    listView1.Items.Add(tmp.ToString());
-                }                
-                //MessageBox.Show(tmp.ToString());
             }
             catch (Exception ex)
             {
@@ -215,20 +209,122 @@ namespace myproject
                 sh.Close();
             }
         }
+        /// <summary>
+        /// 根据dt的信息更新两个listview 一个是更新文本名字，一个是更新图片
+        /// </summary>
+        /// <param name="dt"></param>
         private void bindImgTolist(DataTable dt)
         {
-            
+
             foreach (DataRow stu in dt.Rows)
             {
                 ListViewItem item1 = new ListViewItem(stu[1].ToString());
-                if (stu[2].ToString()=="True")
+                if (stu[2].ToString() == "True")
                     item1.ImageIndex = 0; // 设置为 ImageList 中第一张图片
                 else
                     item1.ImageIndex = 1; // 设置为 ImageList 中第一张图片
                 listView2.Items.Add(item1);
-               
+                StringBuilder tmp = new StringBuilder();
+                tmp.Append(string.Format("学号:{0},姓名:{1}", stu[0], stu[1]));
+                listView1.Items.Add(tmp.ToString());
+
             }
-          
+
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // 确保点击的是数据行（行索引>=0）且不是标题行
+            if (e.RowIndex >= 0)
+            {
+                // 获取被点击的行
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                // 将行中的单元格值赋给文本框
+                // 注意：使用Cells[列索引]或Cells["列名"]来访问单元格
+                txtStudentname.Text = row.Cells["姓名"].Value.ToString();
+                txtStudentNo.Text = row.Cells["学号"].Value.ToString();
+                txtMajor.Text = row.Cells["专业"].Value.ToString();
+                if (row.Cells["性别"].Value.ToString() == "男")
+                    pictureBox1.Image = Image.FromFile(@"..\..\..\faces\boy.jpg");
+                else
+                    pictureBox1.Image = Image.FromFile(@"..\..\..\faces\girl.jpg");
+
+                // 如果某些列可能为null，可以使用安全转换
+                // 例如：txtAge.Text = row.Cells["Age"].Value?.ToString() ?? string.Empty;
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                //string studentnumber = "10130212110";
+                string sql = string.Format(@"update tblTopStudents
+                set Major='{0}',
+                LoginTimes=LoginTimes+1
+                where studentNo='{1}'", txtMajor.Text, txtStudentNo.Text);
+                int ret = sh.RunSQL(sql); //一般运行 查询之外的删、改、增
+                msg = string.Format("修改成功");
+                bindData(base_sql); //重新绑定数据
+            }
+            catch (Exception ex)
+            {
+                msg = ex.Message;
+            }
+            finally
+            {
+                sh.Close();
+            }
+            MessageBox.Show(msg);
+        }
+
+        private void txtStuName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnResetPwd_Click(object sender, EventArgs e)
+        {
+            if(string.IsNullOrEmpty(txtStudentNo.Text))
+            {
+                MessageBox.Show("请先选择一个学生");
+                return;
+            }
+            if(txtPwd.Text.Length < 6)  //检测密码强度，大模型求助
+            {
+                MessageBox.Show("密码长度不能小于6位");
+                return;
+            }
+            if(txtPwd.Text != txtConfirmPwd.Text)
+            {
+                MessageBox.Show("两次输入的密码不一致");
+                return;
+            }
+            // 创建哈希密码
+            string password = txtPwd.Text;
+            string salt;
+            string hash = PasswordHelper.CreateHash(password, out salt); //不可逆哈希
+            try
+            {
+              
+                string sql = string.Format(@"update tblTopStudents
+set pwd='{0}', salt='{1}' 
+where studentNo='{2}'", hash, salt, txtStudentNo.Text);
+                int ret = sh.RunSQL(sql); //一般运行 查询之外的删、改、增
+                msg = string.Format("重置密码成功！");
+              
+            }
+            catch (Exception ex)
+            {
+                msg = ex.Message;
+            }
+            finally
+            {
+                sh.Close();
+            }
+            MessageBox.Show(msg);
+
         }
     }
 }

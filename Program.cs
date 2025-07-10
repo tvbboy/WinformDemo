@@ -15,7 +15,8 @@ namespace myproject
             //Application.Run(new frm24grade());
             // Application.Run(new frmCrawer());
             // Application.Run(new Form1());
-            Application.Run(new frmMain());
+            Application.Run(new frmLogin());
+           // Application.Run(new frmSQL());
 
         }
     }

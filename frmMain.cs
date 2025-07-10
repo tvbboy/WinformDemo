@@ -15,6 +15,7 @@ namespace myproject
         public frmMain()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen; //设置窗体居中显示
         }
 
         private void btnHomework2_Click(object sender, EventArgs e)
@@ -58,6 +59,12 @@ namespace myproject
         {
             frmSegment frmSegment = new frmSegment();
             frmSegment.ShowDialog();
+        }
+
+        private void btnLinkDb_Click(object sender, EventArgs e)
+        {
+            frmSQL fs = new frmSQL();
+            fs.ShowDialog();
         }
     }
 }

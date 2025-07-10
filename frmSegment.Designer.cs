@@ -33,6 +33,8 @@
             label1 = new Label();
             lstNames = new ListBox();
             label2 = new Label();
+            label3 = new Label();
+            cboPosTags = new ComboBox();
             SuspendLayout();
             // 
             // txtInput
@@ -41,14 +43,14 @@
             txtInput.Multiline = true;
             txtInput.Name = "txtInput";
             txtInput.ScrollBars = ScrollBars.Both;
-            txtInput.Size = new Size(425, 375);
+            txtInput.Size = new Size(542, 375);
             txtInput.TabIndex = 0;
             // 
             // btnRecognize
             // 
-            btnRecognize.Location = new Point(455, 94);
+            btnRecognize.Location = new Point(763, 36);
             btnRecognize.Name = "btnRecognize";
-            btnRecognize.Size = new Size(93, 69);
+            btnRecognize.Size = new Size(93, 30);
             btnRecognize.TabIndex = 1;
             btnRecognize.Text = "分词";
             btnRecognize.UseVisualStyleBackColor = true;
@@ -57,7 +59,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(569, 42);
+            label1.Location = new Point(581, 91);
             label1.Name = "label1";
             label1.Size = new Size(42, 22);
             label1.TabIndex = 2;
@@ -66,25 +68,44 @@
             // lstNames
             // 
             lstNames.FormattingEnabled = true;
-            lstNames.Location = new Point(569, 77);
+            lstNames.Location = new Point(571, 140);
             lstNames.Name = "lstNames";
-            lstNames.Size = new Size(422, 378);
+            lstNames.Size = new Size(422, 312);
             lstNames.TabIndex = 3;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 42);
+            label2.Location = new Point(12, 44);
             label2.Name = "label2";
-            label2.Size = new Size(42, 22);
+            label2.Size = new Size(74, 22);
             label2.TabIndex = 4;
-            label2.Text = "输入";
+            label2.Text = "输入文本";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(571, 37);
+            label3.Name = "label3";
+            label3.Size = new Size(42, 22);
+            label3.TabIndex = 5;
+            label3.Text = "词性";
+            // 
+            // cboPosTags
+            // 
+            cboPosTags.FormattingEnabled = true;
+            cboPosTags.Location = new Point(619, 34);
+            cboPosTags.Name = "cboPosTags";
+            cboPosTags.Size = new Size(121, 30);
+            cboPosTags.TabIndex = 6;
             // 
             // frmSegment
             // 
             AutoScaleDimensions = new SizeF(10F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1015, 464);
+            Controls.Add(cboPosTags);
+            Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(lstNames);
             Controls.Add(label1);
@@ -105,5 +126,7 @@
         private Label label1;
         private ListBox lstNames;
         private Label label2;
+        private Label label3;
+        private ComboBox cboPosTags;
     }
 }

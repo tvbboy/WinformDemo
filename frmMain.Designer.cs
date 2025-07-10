@@ -38,6 +38,7 @@
             btnControls = new Button();
             btnCrawer = new Button();
             btnSearchFile = new Button();
+            btnLinkDb = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -87,6 +88,7 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(btnLinkDb);
             tabPage2.Controls.Add(btnSegment);
             tabPage2.Controls.Add(button1);
             tabPage2.Controls.Add(btnControls);
@@ -149,6 +151,16 @@
             btnSearchFile.Text = "示例 搜索文件";
             btnSearchFile.UseVisualStyleBackColor = true;
             // 
+            // btnLinkDb
+            // 
+            btnLinkDb.Location = new Point(294, 31);
+            btnLinkDb.Name = "btnLinkDb";
+            btnLinkDb.Size = new Size(173, 47);
+            btnLinkDb.TabIndex = 9;
+            btnLinkDb.Text = "示例 数据库链接";
+            btnLinkDb.UseVisualStyleBackColor = true;
+            btnLinkDb.Click += btnLinkDb_Click;
+            // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(12F, 26F);
@@ -177,5 +189,6 @@
         private Button btnControls;
         private Button button1;
         private Button btnSegment;
+        private Button btnLinkDb;
     }
 }
