@@ -33,7 +33,9 @@
             label2 = new Label();
             txtPwd = new TextBox();
             btnLogin = new Button();
-            checkBox1 = new CheckBox();
+            chkAutoLogin = new CheckBox();
+            chkRememberMe = new CheckBox();
+            btnForgetPwd = new Button();
             SuspendLayout();
             // 
             // txtUserNo
@@ -71,7 +73,7 @@
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(211, 177);
+            btnLogin.Location = new Point(154, 183);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(95, 40);
             btnLogin.TabIndex = 4;
@@ -79,22 +81,46 @@
             btnLogin.UseVisualStyleBackColor = true;
             btnLogin.Click += btnLogin_Click;
             // 
-            // checkBox1
+            // chkAutoLogin
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(352, 189);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(125, 26);
-            checkBox1.TabIndex = 5;
-            checkBox1.Text = "下次自动登录";
-            checkBox1.UseVisualStyleBackColor = true;
+            chkAutoLogin.AutoSize = true;
+            chkAutoLogin.Location = new Point(284, 191);
+            chkAutoLogin.Name = "chkAutoLogin";
+            chkAutoLogin.Size = new Size(125, 26);
+            chkAutoLogin.TabIndex = 5;
+            chkAutoLogin.Text = "下次自动登录";
+            chkAutoLogin.UseVisualStyleBackColor = true;
+            chkAutoLogin.CheckedChanged += chkAutoLogin_CheckedChanged;
+            // 
+            // chkRememberMe
+            // 
+            chkRememberMe.AutoSize = true;
+            chkRememberMe.Location = new Point(415, 191);
+            chkRememberMe.Name = "chkRememberMe";
+            chkRememberMe.Size = new Size(125, 26);
+            chkRememberMe.TabIndex = 6;
+            chkRememberMe.Text = "记住我的信息";
+            chkRememberMe.UseVisualStyleBackColor = true;
+            chkRememberMe.CheckedChanged += chkRememberMe_CheckedChanged;
+            // 
+            // btnForgetPwd
+            // 
+            btnForgetPwd.Location = new Point(154, 229);
+            btnForgetPwd.Name = "btnForgetPwd";
+            btnForgetPwd.Size = new Size(95, 33);
+            btnForgetPwd.TabIndex = 7;
+            btnForgetPwd.Text = "忘记密码";
+            btnForgetPwd.UseVisualStyleBackColor = true;
+            btnForgetPwd.Click += btnForgetPwd_Click;
             // 
             // frmLogin
             // 
             AutoScaleDimensions = new SizeF(10F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(599, 274);
-            Controls.Add(checkBox1);
+            Controls.Add(btnForgetPwd);
+            Controls.Add(chkRememberMe);
+            Controls.Add(chkAutoLogin);
             Controls.Add(btnLogin);
             Controls.Add(label2);
             Controls.Add(txtPwd);
@@ -115,6 +141,8 @@
         private Label label2;
         private TextBox txtPwd;
         private Button btnLogin;
-        private CheckBox checkBox1;
+        private CheckBox chkAutoLogin;
+        private CheckBox chkRememberMe;
+        private Button btnForgetPwd;
     }
 }
